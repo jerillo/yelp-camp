@@ -10,6 +10,7 @@ const Comment = require('./models/comment');
 const methodOverride = require('method-override');
 const User = require('./models/user');
 const seedDB = require('./seeds')
+const PORT = process.env.PORT || 3000;
 
 // Requiring routes
 const commentRoutes = require('./routes/comments');
@@ -47,4 +48,4 @@ app.use('/', indexRoutes);
 app.use('/campgrounds', campgroundRoutes);
 app.use('/campgrounds/:id/comments', commentRoutes);
 
-app.listen(3000, () => console.log('YelpCamp has started'));
+app.listen(PORT, () => console.log('YelpCamp has started'));
