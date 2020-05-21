@@ -11,7 +11,6 @@ const Comment = require('./models/comment');
 const methodOverride = require('method-override');
 const User = require('./models/user');
 const seedDB = require('./seeds')
-const PORT = process.env.PORT || 3000;
 
 // Requiring routes
 const commentRoutes = require('./routes/comments');
@@ -21,6 +20,7 @@ const indexRoutes = require('./routes/index');
 // mongoose.connect('mongodb://localhost:27017/yelp_camp', {useNewUrlParser: true, useUnifiedTopology: true});
 mongoose.connect(`mongodb+srv://dbUser:${process.env.PASSWORD}@yelpcampcluster-ndpfj.mongodb.net/test?retryWrites=true&w=majority`, {
     useNewUrlParser: true,
+    useUnifiedTopology: true,
     useCreateIndex: true
 }).then(() => {
     console.log('Connected to DB!');
@@ -58,4 +58,4 @@ app.use('/', indexRoutes);
 app.use('/campgrounds', campgroundRoutes);
 app.use('/campgrounds/:id/comments', commentRoutes);
 
-app.listen(PORT, () => console.log('YelpCamp has started'));
+app.listen(process.env.PORT, process.env.IP, () => console.log('YelpCamp has started'));
