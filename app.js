@@ -10,7 +10,7 @@ const Campground = require('./models/campground');
 const Comment = require('./models/comment');
 const methodOverride = require('method-override');
 const User = require('./models/user');
-const seedDB = require('./seeds')
+app.locals.moment = require('moment');
 
 // Requiring routes
 const commentRoutes = require('./routes/comments');
@@ -32,7 +32,6 @@ app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 app.use(methodOverride('_method'));
 app.use(flash());
-// seedDB(); // seed the database
 
 // PASSPORT CONFIGURATION
 app.use(require('express-session')({
